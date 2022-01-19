@@ -21,7 +21,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	$x=new Donationdetails();
 	$d=new DonationCreate();
 	$y=$d->returnid();
-	$x->updatepayment($z,$y);
+	$x->updatepayment($z,$y); 
+	///echo 'mm/' ;
 
 }
 ?>
