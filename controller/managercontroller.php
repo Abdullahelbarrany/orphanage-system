@@ -1,22 +1,34 @@
 <?php
+include_once "../model/greetings.php";
+//session_start();
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 $value=trim($_POST["cars"]);
 if(empty($value))
-{}
+{
+
+}
+else
+
+{$input=trim($_POST["pass"]);
+if(!empty($input))
+{$x=new greetings($value);
+	
+	$x->updateone($x,$input);
+	header("Location:../view/sent.php");
+}
 else
 {
-	include_once "../model/greetings.php";
-	include_once "../model/harvest.php";
-	include_once "../model/christmas.php";
-	include_once "../model/ramadan.php";
-	include_once "../model/greetingsfactory.php";
+	
+
+	////include_once "../model/greetingsfactory.php";
 	$x=new greetings($value);
-	$y = new greetingsfactory();
-	$z=$y->getgreetings($x);
-	$z->update($x);
+	//echo"cccc";
+	//$y = new greetingsfactory();
+//	$z=$y->getgreetings($x);
+	$x->updateall($x);
 	header("Location:../view/sent.php");
 
 }
-
+}
 
 }

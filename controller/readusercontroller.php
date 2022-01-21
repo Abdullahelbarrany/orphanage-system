@@ -1,6 +1,7 @@
 <?php
 require_once '../model/ReadClassUser.php';
 $read = new ReadClassUser();
+
 $result = $read->readAll();
 if (mysqli_num_rows($result) > 0) {
     echo "<table class='table table-bordered table-striped'>";
@@ -13,19 +14,20 @@ if (mysqli_num_rows($result) > 0) {
     echo "<th>E-mail</th>";
     echo "<th>UserTypeID</th>";
     echo "<th>salary</th>";
-    echo "<th>Action</th>";
+    echo "<th>adress_id</th>";
+
     echo "</tr>";
     echo "</thead>";
     echo "<tbody>";
     while ($row = mysqli_fetch_array($result)) {
         echo "<tr>";
-        echo "<td>" . $row['id'] . "</td>";
+        echo "<td>" . $row['id'] . " </td>";
         echo "<td>" . $row['f_name'] . "</td>";
         echo "<td>" . $row['l_name'] . "</td>";
           echo "<td>" . $row['phonenumber'] . "</td>";
-            echo "<td>" . $row['email'] . "</td>";
+            echo "<td>" . $row['E-mail'] . "</td>";
               echo "<td>" . $row['usertypeid'] . "</td>";
-        echo "<td>" . $row['salary'] . "</td>";
+        echo "<td>" . $row['Salary'] . "</td>";
         echo "<td>";
         echo "<a href='View/read.php?id=" . $row['id'] . "' title='View Record' data-toggle='tooltip'>
 							<span class='glyphicon glyphicon-eye-open'></span>

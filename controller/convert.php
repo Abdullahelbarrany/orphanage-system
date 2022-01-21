@@ -13,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		echo json_encode( $data );	
 		exit;
 	}
-	echo "jsd";
+	//echo "jsd";
 	$converted_currency=currencyConverter($from_currency, $to_currency, $amount);
 	$z=returnthis($from_currency, $to_currency, $amount);
 	echo $converted_currency;
@@ -21,8 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	$x=new Donationdetails();
 	$d=new DonationCreate();
 	$y=$d->returnid();
-	$x->updatepayment($z,$y); 
-	///echo 'mm/' ;
+	$x->updatepayment($z,$y);
 
 }
 ?>

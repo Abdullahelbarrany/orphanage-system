@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+include_once '../model/page.php';
 $name = $password = "";
 $username_err = $password_err= "";
 
@@ -10,6 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $username_err = "Please enter a username.";
     }  else {
         $name = $input_name;
+
     }
 
    
@@ -30,18 +33,47 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
  else
  {
        include_once '../model/link.php';
-       $z = new link($r);
-       $l=$z->returnlink();
-      include_once '../model/page.php';
-      $newlink = new page($l);
+        
+       $z = new link();
+       $x2;
+       $cc;
+       $result =$z->returnalllinks($r);
+       $_SESSION['userid']=$name;
+        $_SESSION['usertype']=$r;
+     //   echo"theusernameis". $_SESSION['userid'];
+     //   echo "<br>";
+      //  echo $_SESSION['usertype'];
+       if (mysqli_num_rows($result) > 0) {
+        while($row = mysqli_fetch_array($result))
+        {
+
+        
+    //    echo "cc";
+       $cc= $row['pageid'];
+        $x2=new page($cc);
+       echo "<a href=".$x2->linkadress.">".$x2->friendlyname."</a>";
+        // mysqli_free_result($result);
+       echo "<br>";
+
+       }
+   }
+   else
+   {
+    echo "error";
+   }
+    ///   $l=$z->returnlink();
+     
+     // $newlink = new page($l);
        
         
      }
     }
-    else
-    {
-                 $x=new page(3);
+    else   {
+             //  echo'<script>alert("Wrong input")</script>';
+                 header("Location: ../index.php");
+                 //$x=new page(3);
+                 //$x->echohtml($x);
 
-    }
+   }
 }
       ?>
