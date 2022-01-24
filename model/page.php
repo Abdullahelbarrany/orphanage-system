@@ -34,7 +34,8 @@ class page
 }
 	function echohtml($x)
 	{
-			echo ( $x->html ."<br>");
+			
+			echo  $x->html ;
 	}
 
 	function returnlang()

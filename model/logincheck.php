@@ -1,5 +1,6 @@
 <?php
 include_once "Database.php";
+//session_start();
 class LoginCheck
 {
     function ChecKL($id,$input)
@@ -21,13 +22,14 @@ class LoginCheck
             
 
 
-                 //  echo'<script>alert(result->usertypeid )</script>';
                    include_once "staffclass.php";
                     $y = new staff($id);
                    // echo $id.$y->f_name;
                     $z=$y->password;
 
                     if(password_verify($input,$z)) {
+
+                   $_SESSION['username']=$y->f_name;
                     return $y->usertypeid->id;
                     exit();
 
@@ -69,7 +71,9 @@ return 0 ;
 
        $result = mysqli_query($con,$query);
        if($result)
-       { return 1;
+       { 
+
+        return 1;
 
 
        }

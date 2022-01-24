@@ -26,10 +26,11 @@ if (mysqli_num_rows($result) > 0) {
              echo "<td>";
         echo "<td>";
         echo "<a href='../view/read.php?id=" . $row['id'] . "' title='accept donation' data-toggle='tooltip'>
-							<span class='glyphicon glyphicon-ok'></span>
-						  </a>";
-                echo "<a href='View/read.php?id=" . $row['id'] . "' title='reject donation' data-toggle='tooltip'>
-              <span class='glyphicon glyphicon-remove'></span>
+                            <span class='glyphicon glyphicon-eye-open'></span>
+                          </a>";
+                echo "<a href='../view/delete.php?id=" . $row['id'] . "' title='reject donation' data-toggle='tooltip'>
+              <span class='glyphicon glyphicon-trash'></span>
+             
               </a>";
 
         

@@ -1,7 +1,7 @@
 <?php
 class Donationdetails
-{
-    function InsertDonation($qty,$cat,$id)
+{ public $idd;
+    function InsertDonation($qty,$cat,$id,$sid)
     {
        
       $con = mysqli_connect("localhost", "root", "","orphnew");
@@ -10,7 +10,7 @@ class Donationdetails
    die('Could not connect: ' . mysqli_error());
    }
 
-      $sql = "INSERT INTO donationdetails (catid,Qty,donid) VALUES ('$cat','$qty','$id')";
+      $sql = "INSERT INTO donationdetails (catid,Qty,donid,state_id) VALUES ('$cat','$qty','$id','$sid')";
          
 
       $result = mysqli_query($con,$sql);
@@ -33,6 +33,7 @@ class Donationdetails
     $res = $con->query($sql);
 
       while($row = mysqli_fetch_array($res)){
+        $this->idd=$row['MAX(id)'];
     return $row['MAX(id)'];
   }
 }
@@ -44,8 +45,12 @@ class Donationdetails
    die('Could not connect: ' . mysqli_error());
    }
     
-      $sql = "INSERT INTO donationdetails (catid,Qty,donid) VALUES ('4','$price','$id')";
+      $sql = "INSERT INTO donationdetails (catid,Qty,donid,state_id) VALUES ('4','$price','$id','1')";
     $res = $con->query($sql);
+    if($res)
+    {
+      //echo "done";
+    }
  }
  function getamount($id)
  {

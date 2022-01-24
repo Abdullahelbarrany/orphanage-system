@@ -10,6 +10,7 @@ if(empty($value))
 else
 {
 $x=new poptions();
+$_SESSION['pid']=$value;
 $result=$x->returninput($value);
   $z=new poptions();
   $i=0;
@@ -18,8 +19,9 @@ echo "  <form action='../controller/checkout.php' method='post'> ";
        { 
         $y=$row['optionsid'];
         $z->returnoption($y);
+        $_SESSION['id'.$i]=$z->id;
 
-        echo"<input"." type='".$z->type."'"."id = '".$i."'".">".$z->option."</input>";
+        echo"<input type='".$z->type."'"."name = '".$i."'".">".$z->option."</input>";
         echo "<br>";
         $i=$i+1;
 }

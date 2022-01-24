@@ -2,6 +2,7 @@
 class poptions
 { public $option;
 	public $type;
+	public $id;
 	function returnoptions()
 
 	{
@@ -44,9 +45,29 @@ class poptions
  	  {
          $this->option =$row["name"];
          $this->type=$row["type"];
+         $this->id=$row["id"];
         }
+       
 
 
     }
+     function addvalue($pid,$valuess,$donid)
+    {       
+      $con = mysqli_connect("localhost", "root", "","orphnew");
+  if (!$con)
+    {
+   die('Could not connect: ' . mysqli_error());
+   }
+
+      $sql = "INSERT INTO val (pid,value,donid) VALUES ('$pid','$valuess','$donid')";
+         
+
+      $result = mysqli_query($con,$sql);
+      if(!$result)
+      {
+        echo "error";
+      }
+
+}
 }
 ?>
