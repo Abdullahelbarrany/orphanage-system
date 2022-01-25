@@ -1,0 +1,90 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Register</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
+        <style type="text/css">
+            .wrapper{
+                width: 500px;
+                margin: 0 auto;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="page-header">
+                            <h2>create user</h2>
+                        </div>
+                        <p>Please enter the information of the new user</p>
+                        <form action="../controller/createusercontroller.php" method="post">
+                                <div class="form-group ">
+                                <label>first Name</label>
+                                <input onkeypress="return  /[a-z]/i.test(event.key)" maxlength="15" name="firstname" class="form-control">
+                                <span class="help-block"></span>
+                            </div>
+                           <div class="form-group ">
+                                <label>Last Name</label>
+                                <input onkeypress="return  /[a-z]/i.test(event.key)" maxlength="15" name="lastname" class="form-control">
+                                <span class="help-block"></span>
+                            </div>
+                           
+                            <div class="form-group ">
+                                <label>Password</label>
+                                <input type="Password"  minlength="3" maxlength="12" name="Password" class="form-control"></input>
+                                <span class="help-block"></span>
+                            </div>
+                            <div class="form-group ">
+                                <label>Confirm Password</label>
+                                <input type="Password" minlength="3" maxlength="12" name="ConfirmPassword" class="form-control"></input>
+                                <span class="help-block"></span>
+                            </div>
+                            <div class="form-group ">
+                                <label>Salary</label>
+                                <input type="text" maxlength="4" name="salary" class="form-control">
+                                <span class="help-block"></span>
+                            </div>
+                 <div class="form-group ">
+                                <label>Email</label>
+                                <input type="email" name="Email" class="form-control">
+                                <span class="help-block"></span>
+                            </div>
+                            <div class="form-group ">
+                                <label>Phone Number</label>
+                                <input type="text" maxlength="11" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" name="Phonenumber" class="form-control">
+                                <span class="help-block"></span>
+                            </div>
+                             <div class="form-group ">
+                                <label>Date</label>
+                                <input type="Date"  name="date" class="form-control">
+                                <span class="help-block"></span>
+                            </div>
+                <div class="form-group ">
+                                  <label for="Usertype">Choose a User Type:</label>
+                    
+                   <select name="cars" id="cars">
+      <?php
+    include_once "../controller/usertcontroller.php";
+     ?>
+        </select> 
+                            </div>
+                             <div class="form-group ">
+                                  <label for="Usertype">Adress</label>
+                    
+                   <select name="cars2" id="cars">
+                          <?php
+                 include_once "../controller/adresscontroller.php";
+                             ?>
+                                      </select> 
+                            </div>
+                            <input type="hidden" name="id">
+                            <input type="submit" class="btn btn-primary" value="Submit">
+                            <a href="../index.php" class="btn btn-default">Cancel</a>
+                        </form>
+                    </div>
+                </div>        
+            </div>
+        </div>
+    </body>
